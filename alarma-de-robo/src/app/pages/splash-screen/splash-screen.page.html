@@ -1,0 +1,15 @@
+<!-- <audio autoplay>
+  <source src="../../../assets/sounds/entrance.mp3" type="audio/mpeg">
+</audio> -->
+<ion-content [fullscreen]="true">
+  <div class="bg">
+    <div class="container ion-text-center">
+      <img src="../../../assets/images/icon.png" alt="Logo" />
+    </div>
+
+    <div class="ion-text-center" *ngFor="let name of this.listNames">
+      <h2 class="name animation text-light">{{ name }}</h2>
+      <h3 class="name animation text-light">4B</h3>
+    </div>
+  </div>
+</ion-content>

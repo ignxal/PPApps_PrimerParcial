@@ -1,0 +1,23 @@
+<div class="my-overlay" *ngIf="showOverlay">
+  <div class="rotate-center">
+    <img src="../../../assets/images/icon.png" alt="Logo" class="imgOverlay">
+  </div>
+</div>
+
+<div class="my-loading bg-blue" *ngIf="showLoading"></div>
+<div class="my-loading heartbeat d-flex flex-wrap justify-content-center align-content-center" *ngIf="showLoading">
+  <img src="../../../assets/images/icon.png" alt="Logo" class="imgLoading">
+</div>
+
+
+<ion-app>
+  <ion-router-outlet></ion-router-outlet>
+</ion-app>
+
+<ng-container *ngIf="showLogout">
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button color="danger" (click)="this.userLogout()">
+      <ion-icon name="log-out-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>  
+</ng-container>

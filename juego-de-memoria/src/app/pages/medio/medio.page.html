@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button style="color: black"  default-href="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title><div><app-timer></app-timer></div></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Dificultad: Medio <app-timer></app-timer></ion-title>
+      
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="bg w-100 h-100"  style="overflow: hidden;">
+    <div class="row w-100 h-100 m-0">
+
+        <button *ngFor="let tarjeta of tarjetas" 
+        type="button" 
+        class="col-md-3 col-6 btn btn-dark btnAnimales " 
+        [ngClass]="{'btnSeleccionado':itemSeleccionado(tarjeta) && !itemError(tarjeta),'btnEncontrado':itemEncontrado(tarjeta),'btnError':itemError(tarjeta)}"
+        
+        
+        (click)="seleccionarItem(tarjeta)">
+        <!-- {{tarjeta.valor}} -->
+            <img [src]="'../../../assets/herramientas/'+tarjeta.valor+'.png'" *ngIf="itemSeleccionado(tarjeta) || itemEncontrado(tarjeta)">
+        </button>        
+    </div>
+  </div>
+
+  <!-- <ion-button id="present-alert">Click Me</ion-button>
+<ion-alert trigger="present-alert" class="custom-alert" header="Are you sure?" [buttons]="alertButtons"></ion-alert>
+   -->
+</ion-content>

@@ -1,0 +1,78 @@
+.bg {
+    background-image: url('../../../assets/images/bg.png');
+    // background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: 100% 100%; /* Resize the background image to cover the entire container */
+    background-color: #cccccc;
+    height: 100%;
+    width: 100%;
+}
+
+.btnAnimales {
+    min-width: 10rem;
+    min-height: 10rem;
+    padding: 2px;
+}
+
+.btnAnimales:focus{
+    outline: none;
+    // background-color: var(--bs-btn-bg);
+ }
+ 
+.btnAnimales img {
+    max-width: 70%;
+    max-height: 70%;
+}
+
+.btnSeleccionado{
+    border: 5px solid blue;
+    background-color: grey;
+    animation: flip-in-ver-right 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.1s both,
+                parpadeoAzul 1s infinite;   
+}
+
+.btnError{
+    border: 5px solid red;
+    background-color: grey;
+}
+
+@keyframes flip-in-ver-right {
+  0% {
+    transform: rotateY(-80deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: rotateY(0);
+    opacity: 1;
+  }
+}
+
+.btnEncontrado{
+    border: 5px solid greenyellow; 
+    background-color: grey;    
+}
+
+.alert-wrapper{
+  --background: midnightblue;
+  --background-color: midnightblue
+}
+
+@keyframes parpadeoAzul {
+    0% {
+      border-color: blue; /* Color inicial del borde */
+    }
+    50% {
+      border-color: transparent; /* Cambiar a un color transparente a la mitad de la animación */
+    }
+    100% {
+      border-color: blue; /* Volver al color inicial al final de la animación */
+    }
+  }
+
+  
+  

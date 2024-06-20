@@ -1,0 +1,100 @@
+.miBtn {
+  height: 100px;
+  font-size: 20px;
+}
+
+ion-fab-button {
+  height: 80px;
+  width: 80px;
+}
+
+ion-content {
+  background-image: url("../../../assets/images/bg.png");
+  // background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: 100% 100%; /* Resize the background image to cover the entire container */
+  background-color: #cccccc;
+  height: 100%;
+  width: 100%;
+}
+
+#background-content {
+  background: transparent;
+}
+
+.fecha {
+  color: white;
+  font-size: 1em;
+}
+
+ion-card-content.feas {
+  background: #b7a3bf;
+}
+
+ion-card-header.feas {
+  background: #b7a3bf;
+}
+
+ion-list.list.feas {
+  background: #b7a3bf;
+}
+
+ion-card-content.lindas {
+  background: #a3bfa9;
+}
+
+ion-card-header.lindas {
+  background: #a3bfa9;
+}
+
+ion-list.list.lindas {
+  background: #a3bfa9;
+}
+
+.btn-pretty {
+  --background: #a3bfa9;
+}
+
+.btn-ugly {
+  --background: #b7a3bf;
+}
+
+.btn-all {
+  --background: #a3b9bf;
+}
+
+ion-label {
+  font-size: 25px;
+}
+
+ion-modal {
+  --height: 60%;
+
+  --border-radius: 16px;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+ion-modal::part(backdrop) {
+  background: rgba(209, 213, 219);
+  opacity: 1;
+}
+
+ion-modal ion-toolbar {
+  --background: #a3b9bf;
+  --color: white;
+}
+
+.fotosTransparente {
+  --background: transparent;
+  --background-color: transparent;
+}
+
+h2 {
+  font-size: 1.2rem;
+  font-family: "League spartan";
+}
+
+.list-md {
+  padding-bottom: 0;
+}

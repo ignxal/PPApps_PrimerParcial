@@ -1,0 +1,75 @@
+.miBtn {
+  height: 100px;
+  font-size: 20px;
+}
+
+ion-fab-button {
+  height: 80px;
+  width: 80px;
+}
+
+ion-content {
+  background-image: url("../../../assets/images/bg.png");
+  // background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: 100% 100%; /* Resize the background image to cover the entire container */
+  background-color: #cccccc;
+  height: 100%;
+  width: 100%;
+}
+
+.btn-action {
+  --background: #7697a0;
+}
+
+#background-content {
+  background: transparent;
+}
+
+.fecha {
+  color: white;
+  font-size: 1em;
+}
+
+ion-card-header {
+  --background: #292929;
+}
+
+ion-list.list {
+  background: #a3bfa9;
+}
+
+ion-label {
+  font-size: 25px;
+}
+
+ion-modal {
+  --height: 60%;
+
+  --border-radius: 16px;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+ion-modal::part(backdrop) {
+  background: rgba(209, 213, 219);
+  opacity: 1;
+}
+
+ion-modal ion-toolbar {
+  --background: rgb(14 116 144);
+  --color: white;
+}
+
+.fotosTransparente {
+  --background: transparent;
+  --background-color: transparent;
+}
+
+h2 {
+  font-size: 1.2rem;
+}
+
+.list-md {
+  padding-bottom: 0;
+}

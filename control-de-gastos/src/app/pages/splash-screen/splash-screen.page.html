@@ -1,0 +1,14 @@
+<ion-content [fullscreen]="true">
+  <div class="bg half-screen">
+    <div class="container ion-text-center">
+      <div class="image-text-row">
+        <img src="../../../assets/images/icon.png" alt="Logo" />
+        <span class="name animation text-dark">4B</span>
+      </div>
+    </div>
+
+    <div class="ion-text-center" *ngFor="let name of listNames">
+      <h4 class="name animation text-dark">{{ name }}</h4>
+    </div>
+  </div>
+</ion-content>

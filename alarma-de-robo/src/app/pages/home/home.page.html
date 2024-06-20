@@ -1,0 +1,29 @@
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Bienvenido, {{ usuario.name }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="button-container center">
+    <ion-button expand="full" class="quarter-button" (click)="activarAlarma()" color="success" *ngIf="!alarmaActivada">
+      <div class="d-flex flex-column align-items-center">
+        <img src="../../../assets/images/desbloquear.png">
+        <div class="text-container2 text-wrap">Alarma desactivada</div>
+      </div>
+    </ion-button>
+
+    <ion-button expand="full" class="quarter-button" (click)="openModal()" color="danger" *ngIf="alarmaActivada" #openModalButton>
+      <div class="d-flex flex-column align-items-center">
+        <img src="../../../assets/images/verificado.png">
+        <div class="text-container2 text-wrap">Alarma activada</div>
+      </div>
+    </ion-button>
+  </div>
+  <ion-modal #modal trigger="open-modal" [initialBreakpoint]="1" [breakpoints]="[0, 1]">
+    <ng-template>
+      <ion-input label="Clave" type="password" [(ngModel)]="this.password"></ion-input>
+      <ion-button (click)="desactivarAlarma()">Confirmar</ion-button>
+    </ng-template>
+  </ion-modal>
+</ion-content>

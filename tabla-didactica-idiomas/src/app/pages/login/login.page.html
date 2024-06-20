@@ -1,0 +1,87 @@
+<ion-content>
+  <div class="bg">
+    <div style="display: flex; justify-content: center">
+      <img
+        src="../../../assets/images/icon.png"
+        style="max-width: 70%; margin-top: 10%"
+      />
+    </div>
+    <ion-grid>
+      <form [formGroup]="loginForm">
+        <div class="login__field">
+          <i class="login__icon fas fa-user"></i>
+          <ion-input
+            class="login__input"
+            type="mail"
+            label="Correo"
+            formControlName="email"
+          ></ion-input>
+          <ng-container *ngIf="mail?.hasError('email')">
+            <small class="text-danger">Fomato inválido</small>
+          </ng-container>
+        </div>
+        <div class="login__field">
+          <i class="login__icon fas fa-lock"></i>
+          <ion-input
+            class="login__input"
+            type="password"
+            label="Clave"
+            formControlName="password"
+          ></ion-input>
+          <ng-container *ngIf="password?.hasError('minlength')">
+            <small class="text-danger"
+              >La clave debe tener mínimo
+              {{password?.getError('minlength').requiredLength}}
+              caracteres</small
+            >
+          </ng-container>
+        </div>
+        <button class="button login__submit" (click)="this.login(loginForm)">
+          <span class="button__text">Iniciar sesión</span>
+          <ion-icon
+            class="button__icon"
+            name="arrow-forward-circle-outline"
+          ></ion-icon>
+        </button>
+      </form>
+      <br />
+
+      <h4 class="text-center">¿No estás registrado?</h4>
+      <button
+        size=""
+        expand="block"
+        class="danger"
+        (click)="goToRegistro()"
+        class="button login__submit"
+      >
+        <span class="button__text">Registro</span>
+        <ion-icon class="button__icon" name="person-add-outline"></ion-icon>
+      </button>
+    </ion-grid>
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+      <ion-fab-button style="--background: #4f4ef8">
+        <ion-icon name="people"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="start">
+        <ion-fab-button
+          style="--background: #4ea2f8"
+          (click)="completarCampos(1)"
+        >
+          <ion-icon name="accessibility" id="metre"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button
+          style="--background: #f8a44e"
+          (click)="completarCampos(2)"
+        >
+          <ion-icon name="accessibility" id="mozo"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button
+          style="--background: #a2f84e"
+          (click)="completarCampos(3)"
+        >
+          <ion-icon name="accessibility" id="cocinero"></ion-icon>
+        </ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
+  </div>
+</ion-content>

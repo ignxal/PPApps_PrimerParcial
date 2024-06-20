@@ -1,0 +1,82 @@
+<ion-content [fullscreen]="true">
+  <div class="bg">
+    <div style="display: flex; justify-content: center">
+      <img
+        src="../../../assets/images/icon.png"
+        style="max-width: 70%; margin-top: 10%"
+      />
+    </div>
+    <form [formGroup]="loginForm">
+      <ion-grid>
+        <ion-row color="primary" justify-content-center>
+          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+            <div padding>
+              <ion-item>
+                <ion-input
+                  type="mail"
+                  label="Correo"
+                  formControlName="email"
+                ></ion-input>
+                <ng-container *ngIf="mail?.hasError('email')">
+                  <small class="text-danger">Fomato inválido</small>
+                </ng-container>
+              </ion-item>
+              <ion-item>
+                <ion-input
+                  type="password"
+                  label="Contraseña"
+                  formControlName="password"
+                ></ion-input>
+                <ng-container *ngIf="password?.hasError('minlength')">
+                  <small class="text-danger"
+                    >La contraseña debe tener mínimo
+                    {{password?.getError('minlength').requiredLength}}
+                    caracteres</small
+                  >
+                </ng-container>
+              </ion-item>
+            </div>
+            <div padding>
+              <ion-button
+                size="large"
+                type="submit"
+                class="btn-login"
+                (click)="this.login(loginForm)"
+                expand="block"
+                [disabled]="loginForm.invalid"
+                >INICIAR SESIÓN</ion-button
+              >
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+    <hr />
+    <h4 class="text-secondary text-center">¿No estás registrado?</h4>
+    <ion-button
+      size=""
+      expand="block"
+      class="btn-register tertiary"
+      (click)="goToRegistro()"
+      >Registrarse</ion-button
+    >
+
+    <ion-fab slot="fixed" vertical="bottom" horizontal="start">
+      <ion-fab-button color="#af938c">
+        <ion-icon name="people"></ion-icon>
+      </ion-fab-button>
+
+      <ion-fab-list side="end">
+        <ion-fab-button color="#bfa9a3" (click)="completarCampos(1)">
+          <ion-icon name="footsteps" id="metre"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button color="#bfa9a3" (click)="completarCampos(2)">
+          <ion-icon name="layers" id="mozo"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button color="#bfa9a3" (click)="completarCampos(3)">
+          <ion-icon name="pizza" id="cocinero"></ion-icon>
+        </ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
+  </div>
+</ion-content>

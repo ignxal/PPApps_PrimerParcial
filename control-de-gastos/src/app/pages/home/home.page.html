@@ -1,0 +1,195 @@
+<ion-header>
+  <ion-toolbar style="--background: #428682">
+    <ion-title class="ion-text-center">Control de Gastos Mensuales</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="bg">
+    <!-- Sección superior con ingreso mensual, umbral de gasto y botones para abrir modal -->
+    <div class="top-section p-2" style="background: #428660">
+      <div class="row">
+        <div class="col-6 ion-text-center d-flex flex-column mb-2 mt-2">
+          <ion-label style="color: white" class="ion-text-uppercase"
+            >Ingreso Mensual</ion-label
+          >
+          <ion-text class="ion-text-nowrap" style="color: white"
+            >{{ this.gastos.ingresos| currency:'$':'symbol':'1.2-2' }}</ion-text
+          >
+          <ion-button
+            style="--color: white; --background: #424686"
+            size="small"
+            (click)="abrirModal('Ingreso Mensual')"
+            >Editar</ion-button
+          >
+        </div>
+
+        <div class="col-6 ion-text-center d-flex flex-column mb-2 mt-2">
+          <ion-label style="color: #fff" class="ion-text-uppercase"
+            >Umbral de Gasto</ion-label
+          >
+          <ion-text
+            style="color: #fff"
+            label="Umbral de Gasto"
+            class="ion-text-nowrap"
+            >{{ this.gastos.margen }}%</ion-text
+          >
+          <ion-button
+            size="small"
+            style="--color: white; --background: #424686"
+            (click)="abrirModal('Umbral de Gasto (%)')"
+            >Editar</ion-button
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 d-flex mb-2 justify-content-center">
+          <ion-label
+            class="text-uppercase"
+            style="font-weight: 800; font-size: 1.2em"
+            [style]="getDanger() ? 'color:var(--ion-color-danger)' : 'color:white'"
+            >Total gastos:
+          </ion-label>
+          <ion-label
+            label="Umbral de Gasto"
+            style="font-weight: 800; font-size: 1.2em"
+            class="ion-text-nowrap"
+            [style]="getDanger() ? 'color:var(--ion-color-danger)' : 'color:white'"
+            >{{' '}} {{gastosUltimoMes| currency:'$':'symbol':'1.2-2'
+            }}</ion-label
+          >
+        </div>
+      </div>
+    </div>
+    <ion-card style="--background: #868242" *ngIf="modalAbierto" class="p-2">
+      <ion-card-header>
+        <ion-card-title style="color: white">{{modalTitulo}}</ion-card-title>
+      </ion-card-header>
+      <ion-item style="--background: #868242">
+        <ion-input
+          type="number"
+          [(ngModel)]="nuevoMonto"
+          style="--background: #868242; color: white"
+        ></ion-input>
+      </ion-item>
+      <ion-button
+        style="width: 100%; --background: #428660"
+        (click)="guardarNuevoMonto()"
+        >Guardar</ion-button
+      >
+    </ion-card>
+
+    <div class="row" *ngIf="!gastoOpen">
+      <div class="col ion-text-center">
+        <ion-button
+          expand="full"
+          color="warning"
+          (click)="abrirNuevoGasto()"
+          style="font-size: 1.2em; color: white"
+          >Agregar Gasto</ion-button
+        >
+      </div>
+    </div>
+    <ion-card style="--background: #868242" *ngIf="gastoOpen" class="p-2">
+      <ion-fab vertical="top" horizontal="end" (click)="abrirNuevoGasto()">
+        <ion-fab-button style="--background: #864246" size="small">
+          <ion-icon name="close"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+      <ion-card-header style="color: white; --background: #868242">
+        <ion-card-title>Agregar gasto</ion-card-title>
+      </ion-card-header>
+      <ion-item style="--background: #868242" class="">
+        <ion-select
+          label="Categoría"
+          [(ngModel)]="selectedCategoria"
+          style="color: white"
+          style="--background: #868242"
+        >
+          <ion-select-option
+            style="color: white; --background: #868242"
+            value="alimentos"
+            >Alimentos</ion-select-option
+          >
+          <ion-select-option
+            style="color: white; --background: #868242"
+            value="medicina"
+            >Medicina</ion-select-option
+          >
+          <ion-select-option
+            style="color: white; --background: #868242"
+            value="servicios"
+            >Servicios</ion-select-option
+          >
+          <ion-select-option
+            style="color: white; --background: #868242"
+            value="impuestos"
+            >Impuestos</ion-select-option
+          >
+          <!-- Agrega más opciones según sea necesario -->
+        </ion-select>
+      </ion-item>
+      <ion-input
+        label="Monto:"
+        type="number"
+        [(ngModel)]="gasto"
+        style="
+          font-size: 1.2em;
+          margin-left: 1rem;
+          --background: #868242;
+          color: black;
+        "
+      ></ion-input>
+      <ion-button
+        expand="full"
+        color="warning"
+        (click)="guardarGasto()"
+        style="font-size: 1.2em"
+        >Guardar Gasto</ion-button
+      >
+    </ion-card>
+
+    <ion-card style="max-height: 50%; overflow: scroll">
+      <ion-card-header style="--background: #533b29">
+        <ion-card-title class="ion-text-center" style="color: white"
+          >Gastos</ion-card-title
+        >
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item *ngFor="let gasto of gastos.movimientos">
+            <ion-label slot="start" class="overflow-visible"
+              >{{gasto.fecha.toDate().toLocaleDateString()}} - {{gasto.categoria
+              | titlecase}}
+            </ion-label>
+            <ion-label slot="end" class="overflow-visible"
+              >{{gasto.monto| currency:'$':'symbol':'1.0-0' }}</ion-label
+            >
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="style">
+      <ion-card-header class="style" style="--background: #533b29">
+        <ion-card-title class="ion-text-center" style="color: white"
+          >Gastos por Categoría</ion-card-title
+        >
+      </ion-card-header>
+      <ion-card-content class="chart-container">
+        <app-g-torta style="color: white"></app-g-torta>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="style">
+      <ion-card-header class="style" style="--background: #533b29">
+        <ion-card-title class="ion-text-center" style="color: white"
+          >Gastos vs. Ahorro Anualizado</ion-card-title
+        >
+      </ion-card-header>
+      <ion-card-content class="chart-container">
+        <app-g-barra style="color: white"></app-g-barra>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

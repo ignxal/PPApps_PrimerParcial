@@ -1,0 +1,29 @@
+.error {
+  color: #eb445a;
+  font-size: 12px;
+  margin-left: 1rem;
+}
+
+hr {
+  opacity: 1;
+  border-width: 0.2rem;
+  color: #3880ff;
+}
+
+img {
+  border-radius: 1rem;
+}
+
+ion-title {
+  font-family: "Garet-Book";
+}
+
+.bg {
+  background-image: url("../../../assets/images/bg.png");
+  // background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: 100% 100%; /* Resize the background image to cover the entire container */
+  background-color: #cccccc;
+  height: 100%;
+  width: 100%;
+}

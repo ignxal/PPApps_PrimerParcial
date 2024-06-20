@@ -1,0 +1,65 @@
+.bg {
+  background-image: url("../../../assets/images/bg.png");
+  // background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: 100% 100%; /* Resize the background image to cover the entire container */
+  background-color: #cccccc;
+  height: 100%;
+  width: 100%;
+}
+
+.btnAnimales {
+  min-width: 10rem;
+  min-height: 10rem;
+}
+
+.btnAnimales img {
+  max-width: 70%;
+  max-height: 70%;
+}
+
+span {
+  font-size: 5rem;
+  font-family: "Comic Sans";
+  src: url(../../../assets/fonts/COMICSANS.TTF);
+}
+
+.marron {
+  background-color: brown;
+}
+
+.rojo {
+  background-color: red;
+}
+
+.verde {
+  background-color: green;
+}
+
+.amarillo {
+  background-color: yellow;
+}
+
+.celeste {
+  background-color: skyblue;
+}
+
+.blanco {
+  background-color: white;
+}
+
+.naranja {
+  background-color: orange;
+}
+
+.rosa {
+  background-color: pink;
+}
+
+.violeta {
+  background-color: purple;
+}
+
+.gris {
+  background-color: grey;
+}

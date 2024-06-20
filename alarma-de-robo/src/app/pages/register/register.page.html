@@ -1,0 +1,128 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="#"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="pt-3">Alta de usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="bg">
+    <div style="display:flex;justify-content: center;">
+      <img src="../../../assets/images/icon.png" style="max-width: 40%; margin-top: 5%;">
+    </div>
+    <ion-card>
+      <!-- <ion-card-header>
+        <ion-card-title>Nuevo Cliente</ion-card-title>
+        <ion-card-subtitle>
+          Recuerde que su usuario deberá ser aprobado para poder comenzar a utilizarlo.
+        </ion-card-subtitle>
+      </ion-card-header> -->
+
+      <ion-card-content>
+        <form [formGroup]="regForm" (ngSubmit)="save()" id="regForm">
+          <ion-list>
+            <ion-item>
+              <ion-input color="primary" labelPlacement="floating" label="Nombre" formControlName="nombre" type="text"
+                required></ion-input>
+            </ion-item>
+            <ng-container *ngIf="nombre?.hasError('required') && nombre?.touched">
+              <p class="error">Campo requerido</p>
+            </ng-container>
+            <ng-container *ngIf="nombre?.hasError('pattern')">
+              <p class="error">El nombre debe componerse sólo de letras</p>
+            </ng-container>
+            <ng-container *ngIf="nombre?.hasError('minlength')">
+              <p class="error">El nombre debe tener más de tres letras</p>
+            </ng-container>
+
+            <ion-item>
+              <ion-input color="primary" labelPlacement="floating" label="Apellido" formControlName="apellido"
+                type="text" required></ion-input>
+            </ion-item>
+            <ng-container *ngIf="apellido?.hasError('required') && apellido?.touched">
+              <p class="error">Campo requerido</p>
+            </ng-container>
+            <ng-container *ngIf="apellido?.hasError('pattern')">
+              <p class="error">El apellido debe componerse sólo de letras</p>
+            </ng-container>
+            <ng-container *ngIf="apellido?.hasError('minlength')">
+              <p class="error">El apellido debe tener más de dos letras</p>
+            </ng-container>
+
+            <!-- <ion-item>
+            <ion-input color="primary" labelPlacement="floating" label="DNI" formControlName="dni" type="number"
+              required></ion-input>
+          </ion-item>
+          <ng-container *ngIf="dni?.hasError('required') && dni?.touched">
+            <p class="error">Campo requerido</p>
+          </ng-container>
+          <ng-container *ngIf="dni?.hasError('min') || dni?.hasError('max')">
+            <p class="error">El DNI debe ser un valor entre 0 y 99999999</p>
+          </ng-container>
+
+          <ion-item>
+            <ion-label>Foto</ion-label>
+            <ion-button color="tertiary" (click)="updFoto()">
+              <ion-icon name="camera-sharp" size="large"></ion-icon>
+            </ion-button>
+          </ion-item>
+
+          <ion-item *ngIf="fotoSrc">
+            <img #imagen [src]="fotoSrc" alt="foto" (load)="loadImg($event)">
+            <ion-fab vertical="top" horizontal="end" class="pe-1">
+              <ion-fab-button size="small" color="danger" class="mt-0" (click)="delFoto()">
+                <ion-icon name="close-outline"></ion-icon>
+              </ion-fab-button>
+            </ion-fab>
+          </ion-item> -->
+
+            <!-- <hr> -->
+
+            <ion-item>
+              <ion-input color="primary" labelPlacement="floating" label="Correo" formControlName="email" type="email"
+                required></ion-input>
+            </ion-item>
+            <ng-container *ngIf="email?.hasError('required') && email?.touched">
+              <p class="error">Campo requerido</p>
+            </ng-container>
+            <ng-container *ngIf="email?.hasError('email')">
+              <p class="error">Formato de correo inválido</p>
+            </ng-container>
+
+            <ion-item>
+              <ion-input color="primary" labelPlacement="floating" label="Clave" formControlName="password"
+                type="password" maxlength="15" required></ion-input>
+            </ion-item>
+            <ng-container *ngIf="password?.hasError('required') && password?.touched">
+              <p class="error">Campo requerido</p>
+            </ng-container>
+            <ng-container *ngIf="password?.hasError('minlength') || password?.hasError('maxlength')">
+              <p class="error">La clave debe tener entre 4 y 15 carácteres</p>
+            </ng-container>
+
+            <ion-item>
+              <ion-input color="primary" labelPlacement="floating" label="Repetir clave"
+                formControlName="confirmPassword" type="password" maxlength="15" required></ion-input>
+            </ion-item>
+            <ng-container *ngIf="confirmPassword?.hasError('required') && confirmPassword?.touched">
+              <p class="error">Campo requerido</p>
+            </ng-container>
+            <ng-container *ngIf="regForm?.hasError('passwordMatchingValidatior')">
+              <p class="error">Las claves no coinciden</p>
+            </ng-container>
+
+          </ion-list>
+          <!-- <ion-button (click)="leerQr()" expand="block" size="large" color="warning">Leer DNI</ion-button> -->
+          <ion-button expand="block" type="submit" [disabled]="regForm.invalid" size="large">Guardar</ion-button>
+        </form>
+      </ion-card-content>
+    </ion-card>
+    <!-- <ion-button expand="block" type="submit" (click)="test()">TEST</ion-button> -->
+  </div>
+</ion-content>
+
+<!-- <ion-footer>
+  <ion-button expand="full" type="submit" [disabled]="regForm.invalid" size="large" form="regForm">Guardar</ion-button>
+</ion-footer> -->

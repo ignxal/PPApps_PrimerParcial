@@ -1,0 +1,71 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title style="color: black"> Seleccione dificultad </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="bg">
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title style="color: black" size="large"
+          >Seleccione dificultad</ion-title
+        >
+      </ion-toolbar>
+    </ion-header>
+
+    <div class="button-container center">
+      <ion-button
+        expand="full"
+        class="quarter-button"
+        style="--background: #98fb98"
+        (click)="irAFacil()"
+      >
+        <div class="d-flex flex-column align-items-center">
+          <!-- <img src="../../../assets/images/cosas-lindas.png"> -->
+          <div class="text-container2 text-wrap" style="color: black">
+            Fácil
+          </div>
+          <label class="text-container3" style="color: black">3 pares</label>
+        </div>
+      </ion-button>
+      <ion-button
+        expand="full"
+        class="quarter-button"
+        style="--background: #fbfb98"
+        (click)="irAMedio()"
+      >
+        <div class="d-flex flex-column align-items-center">
+          <!-- <img src="../../../assets/images/cosas-feas.png"> -->
+          <div class="text-container2 text-wrap" style="color: black">
+            Medio
+          </div>
+          <label class="text-container3" style="color: black">5 pares</label>
+        </div>
+      </ion-button>
+      <ion-button
+        expand="full"
+        class="quarter-button"
+        style="--background: #f84e4e"
+        (click)="irADificil()"
+      >
+        <div class="d-flex flex-column align-items-center">
+          <!-- <img src="../../../assets/images/cosas-feas.png"> -->
+          <div class="text-container2 text-wrap">Difícil</div>
+          <label class="text-container3">8 pares</label>
+        </div>
+      </ion-button>
+    </div>
+
+    <ion-fab
+      slot="fixed"
+      vertical="bottom"
+      horizontal="end"
+      (click)="irAScores()"
+    >
+      <ion-fab-button color="success">
+        <ion-icon name="stats-chart" size="large"> </ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+</ion-content>

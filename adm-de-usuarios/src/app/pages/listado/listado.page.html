@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Usuarios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Usuarios</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card>    
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let usuario of usuariosArr">
+          <ion-thumbnail slot="start">
+            <img alt="Silhouette of mountains" [src]="usuario.photo? usuario.photo :'https://ionicframework.com/docs/img/demos/thumbnail.svg'" />
+          </ion-thumbnail>
+          <ion-label>{{usuario.name}} {{usuario.lastName}}</ion-label>
+        </ion-item>
+  
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

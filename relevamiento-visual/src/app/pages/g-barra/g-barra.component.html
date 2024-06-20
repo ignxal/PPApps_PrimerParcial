@@ -1,0 +1,46 @@
+<div class="chart-container my-3">
+  <h4 class="text-center text-dark display-6 mt-4" style="font-size: 1.5rem;  font-weight: 300;">Votos de cosas feas</h4>
+  <canvas  id="MyChart" >{{ chart }}</canvas>
+</div>
+
+<ion-button id="openModalButton" style="display: none;"></ion-button>
+
+<ion-modal #modal trigger="openModalButton">
+  <ng-template>
+    <ion-content>
+      <ion-toolbar>
+        <ion-title>Imagen seleccionada</ion-title>
+        <ion-buttons slot="end">
+          <ion-button color="light" (click)="modal.dismiss()">Cerrar</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+      <ion-list>
+        <div class="row border-bottom border-1 border-light">
+          <div class="fecha text-center">
+            {{mostrarFecha(elementoSeleccionado.fecha)}} - {{elementoSeleccionado.email}}
+          </div>
+          <div style="max-height: 20rem; overflow: scroll;" class="d-flex justify-content-center mb-2">
+            <img alt="{{elementoSeleccionado.cosa}}" src="{{elementoSeleccionado.base64}}" />
+          </div>
+          <div class="row py-2 m-0" style="background-color: black;">
+            <div class="d-flex justify-content-around align-items-center">
+              <div class="d-flex flex-column ">
+                <ion-icon [name]="getVotoTipo(elementoSeleccionado,'up') ? 'thumbs-up' : 'thumbs-up-outline'" color="success"
+                  size="large" (click)="votoArriba(elementoSeleccionado)"></ion-icon>
+                <ion-label>{{getCantidadVotos(elementoSeleccionado,'up')}}</ion-label>
+              </div>
+              <div class="d-flex flex-column">
+                <ion-icon [name]="getVotoTipo(elementoSeleccionado,'down') ? 'thumbs-down' : 'thumbs-down-outline'" color="danger"
+                  size="large" (click)="votoAbajo(elementoSeleccionado)"></ion-icon>
+                <ion-label>{{getCantidadVotos(elementoSeleccionado,'down')}}</ion-label>
+              </div>
+            </div>           
+          </div>
+        </div>
+      </ion-list>
+      <div class="d-flex justify-content-center">
+      <img >
+    </div>
+    </ion-content>
+  </ng-template>
+</ion-modal>

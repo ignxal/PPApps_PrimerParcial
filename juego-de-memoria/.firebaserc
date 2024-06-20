@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "practicaprofesional-865b4": {
+      "hosting": {
+        "app": [
+          "practicaprofesional-865b4"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "practicaprofesional-865b4"
+  }
+}

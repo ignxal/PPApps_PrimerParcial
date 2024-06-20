@@ -1,0 +1,71 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Bienvenido, {{ usuario.name }} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Bienvenido, {{ usuario.name }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="d-flex justify-content-evenly">
+    <ion-fab
+      slot="fixed"
+      vertical="top"
+      horizontal="start"
+      style="margin-right: 4rem; margin-top: -5px"
+    >
+      <ion-fab-button class="btn-main">
+        <ion-icon name="earth" [class]="idioma"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="end">
+        <ion-fab-button color="dark" (click)="cambiarIdioma('es-ES')">
+          <ion-thumbnail>
+            <img alt="ES" src="../../../assets/images/espana.png" />
+          </ion-thumbnail>
+        </ion-fab-button>
+        <ion-fab-button color="dark" (click)="cambiarIdioma('en-GB')">
+          <img alt="EN" src="../../../assets/images/reino-unido.png" />
+        </ion-fab-button>
+        <ion-fab-button color="dark" (click)="cambiarIdioma('pt-BR')">
+          <img alt="PT" src="../../../assets/images/portugal.png" />
+        </ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
+
+    <ion-fab
+      slot="fixed"
+      vertical="top"
+      horizontal="end"
+      style="margin-left: 4rem; margin-top: -5px"
+    >
+      <ion-fab-button class="btn-main">
+        <ion-icon name="sparkles" [class]="categoria"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="start">
+        <ion-fab-button color="dark" (click)="cambiarCategoria('colores')">
+          <img alt="PT" src="../../../assets/images/colores.png" />
+        </ion-fab-button>
+        <ion-fab-button color="dark" (click)="cambiarCategoria('numeros')">
+          <img alt="PT" src="../../../assets/images/numeros.png" />
+        </ion-fab-button>
+        <ion-fab-button color="dark" (click)="cambiarCategoria('animales')">
+          <img alt="PT" src="../../../assets/images/animales.png" />
+        </ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
+  </div>
+
+  <ng-container *ngIf="categoria === 'animales'">
+    <app-animales></app-animales>
+  </ng-container>
+  <ng-container *ngIf="categoria === 'numeros'">
+    <app-numeros></app-numeros>
+  </ng-container>
+  <ng-container *ngIf="categoria === 'colores'">
+    <app-colores></app-colores>
+  </ng-container>
+</ion-content>

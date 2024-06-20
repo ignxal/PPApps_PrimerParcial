@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Bienvenido, {{ usuario.name }} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Bienvenido, {{ usuario.name }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="button-container center mx-3">
+    <ion-button
+      (click)="irAMisFotos()"
+      expand="full"
+      class="d-flex align-items-center mis-fotos"
+      id="delete-credits"
+      style="height: 5em"
+    >
+      <!-- <ion-thumbnail> -->
+      <img
+        src="../../../assets/images/propias.png"
+        style="height: 2.5em; width: 2.5em; margin-right: 10px"
+      />
+      <!-- </ion-thumbnail> -->
+      <div class="text-container3 text-wrap">Mis fotos</div>
+    </ion-button>
+    <ion-button
+      expand="full"
+      class="quarter-button btn-cosas-lindas"
+      (click)="irACosasLindas()"
+    >
+      <div class="d-flex flex-column align-items-center">
+        <img src="../../../assets/images/cosas-lindas.png" />
+        <div class="text-container2 text-wrap">Cosas lindas</div>
+      </div>
+    </ion-button>
+    <ion-button
+      expand="full"
+      class="quarter-button btn-cosas-feas"
+      (click)="irACosasFeas()"
+    >
+      <div class="d-flex flex-column align-items-center">
+        <img src="../../../assets/images/cosas-feas.png" />
+        <div class="text-container2 text-wrap" style="width: 90%">
+          Cosas feas
+        </div>
+      </div>
+    </ion-button>
+  </div>
+
+  <!-- <div class="botones-seleccion">
+
+
+    <button (click)="irACosasLindas()">
+      <img src="ruta/imagen-cosas-lindas.jpg" alt="Cosas Lindas">s
+    </button>
+    <button (click)="irACosasFeas()">
+      <img src="ruta/imagen-cosas-feas.jpg" alt="Cosas Feas">
+    </button>
+  </div> -->
+</ion-content>
